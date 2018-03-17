@@ -1,0 +1,16 @@
+version: '3'
+services:
+  database:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-mysql
+  jira:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-jira
+    ports:
+      - '8080:8080'
+    links:
+      - database
+    depends_on:
+      - database
