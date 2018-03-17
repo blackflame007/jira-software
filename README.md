@@ -4,6 +4,7 @@ This is a small and simple docker compose file for jira software. Before using i
 
 1. `git clone`
 1. `vim docker/dockerfile-mysql` and set another password
+1. Adjust docker-compose.yml
 1. `docker-compose up -d`
 1. follow the installation guide
 
