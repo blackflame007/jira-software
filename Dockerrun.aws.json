@@ -1,0 +1,40 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "jira",
+        "image": "blackflame007/jira:latest",
+        "hostname": "jira",
+        "essential": false,
+        "portMappings": [
+            {
+              "hostPort": 8080,
+              "containerPort": 8080
+            }
+          ],
+        "memory": 128,
+          "links": ["database"]
+      },
+      {
+        "name": "database",
+        "image": "blackflame007/jira-mysql",
+        "hostname": "database",
+        "essential": false,
+        "memory": 128
+      },
+      {
+        "name": "nginx",
+        "image": "blackflame007/jira-nginx",
+        "hostname": "nginx",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ],
+        "links": ["jira"],
+        "memory": 128
+      }
+    ]
+  }
